@@ -58,15 +58,21 @@ namespace BL_8_Struct_Enum_Tuple_Generic
 		/// </summary>
 		public static void Lb8_P2_3()
         {
+			const int COUNT = 10;
+			const int RND_VALUE = 10;
 			Random rnd = new Random();
 			Random rnd2 = new Random();
-			Rectangle[] massRectangle = new Rectangle[100];
-			for(int i = 0; i < 100; i++)
+			Rectangle[] massRectangle = new Rectangle[COUNT];
+			for(int i = 0; i < COUNT; i++)
 			{
-				//massRectangle[i].Co
+				massRectangle[i] = new Rectangle(rnd.Next(RND_VALUE), rnd.Next(RND_VALUE), rnd2.Next(1, RND_VALUE), rnd2.Next(1, RND_VALUE));
 			}
-
-        }
+			foreach(Rectangle rectangle in massRectangle)
+			{
+				Console.WriteLine(rectangle);
+			}
+			
+		}
 
         /// <summary>
         /// BL8-P3/3.Anonymous. Создать метод GetSongData, 
