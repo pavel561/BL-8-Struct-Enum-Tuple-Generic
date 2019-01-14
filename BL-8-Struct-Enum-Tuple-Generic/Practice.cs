@@ -16,32 +16,41 @@ namespace BL_8_Struct_Enum_Tuple_Generic
 		/// </summary>
 		public static void Lb8_P1_3()
 		{
+			Rectangle rectangle = new Rectangle(10, 20, 50, 50);
+			Console.WriteLine(rectangle);
 
 		}
 		public struct Rectangle
 		{
-			int Height;
-			int Width;
-			int CoordX;
-			int CoordY;
+			public int Height;
+			public int Width;
+			public Coordinate Coord;
 			public Rectangle(int CoordX, int CoordY, int Height, int Width)
 			{
-				this.CoordX = CoordX;
-				this.CoordY = CoordY;
+				Coord = new Coordinate(CoordX, CoordY);
 				this.Height = Height;
 				this.Width = Width;
+			}
+			public override string ToString()
+			{
+				return $"heigth - {this.Height}; width - {this.Width}; {Coord}";
 			}
 		}
 		public struct Coordinate
 		{
-			int X;
-			int Y;
+			public int X;
+			public int Y;
 			public Coordinate(int X, int Y)
 			{
 				this.X = X;
 				this.Y = Y;
 			}
+			public override string ToString()
+			{
+				return $"coordX - {this.X}; coordY - {this.Y}";
+			}
 		}
+
 
 		/// <summary>
 		/// BL8-P2/3. Cоздать случайный массив квадратов с количеством элементов 100. 
@@ -49,6 +58,13 @@ namespace BL_8_Struct_Enum_Tuple_Generic
 		/// </summary>
 		public static void Lb8_P2_3()
         {
+			Random rnd = new Random();
+			Random rnd2 = new Random();
+			Rectangle[] massRectangle = new Rectangle[100];
+			for(int i = 0; i < 100; i++)
+			{
+				//massRectangle[i].Co
+			}
 
         }
 
