@@ -18,7 +18,7 @@ namespace BL_8_Struct_Enum_Tuple_Generic
 		{
 			Rectangle rectangle = new Rectangle(10, 20, 50, 50);
 			Console.WriteLine(rectangle);
-
+			Console.ReadLine();
 		}
 		public struct Rectangle
 		{
@@ -58,20 +58,55 @@ namespace BL_8_Struct_Enum_Tuple_Generic
 		/// </summary>
 		public static void Lb8_P2_3()
         {
-			const int COUNT = 10;
-			const int RND_VALUE = 10;
+			const int COUNT = 100;
+			const int RND_VALUE = 5;
 			Random rnd = new Random();
 			Random rnd2 = new Random();
 			Rectangle[] massRectangle = new Rectangle[COUNT];
+			//Заполняю массив случайными значениями
 			for(int i = 0; i < COUNT; i++)
 			{
-				massRectangle[i] = new Rectangle(rnd.Next(RND_VALUE), rnd.Next(RND_VALUE), rnd2.Next(1, RND_VALUE), rnd2.Next(1, RND_VALUE));
+				massRectangle[i] = new Rectangle(rnd.Next(RND_VALUE), rnd.Next(RND_VALUE), rnd.Next(1, RND_VALUE), rnd.Next(1, RND_VALUE));
 			}
-			foreach(Rectangle rectangle in massRectangle)
+			//Вывожу на консоль
+			foreach (Rectangle rectangle in massRectangle)
 			{
 				Console.WriteLine(rectangle);
 			}
-			
+			//Создаю List и копирую в него элементы массива
+			List<Rectangle> listRectangle = new List<Rectangle>();
+			foreach(Rectangle item in massRectangle)
+			{
+				listRectangle.Add(item);
+			}
+			//Сравниваю каждый элемент списка с остальными, при совпадении всех полей объекта - удаляю дубликат
+			for (int item = 0; item < listRectangle.Count-1; item++)
+			{
+				for(int i = item+1; i<listRectangle.Count;)
+				{
+					if (listRectangle[item].Height == listRectangle[i].Height &&
+						listRectangle[item].Width == listRectangle[i].Width &&
+						listRectangle[item].Coord.X == listRectangle[i].Coord.X &&
+						listRectangle[item].Coord.Y == listRectangle[i].Coord.Y)
+					{
+						listRectangle.Remove(listRectangle[i]);
+					}
+					else
+					{
+						i++;
+					}
+				}
+			}
+			//Вывожу на консоль получившийся список
+			Console.WriteLine($"");
+			foreach (Rectangle rectangle in listRectangle)
+			{
+				Console.WriteLine(rectangle);
+			}
+			//Вывожу на консоль информацию о количестве элементов
+			Console.WriteLine($"Количество элементов в исходном массиве = {massRectangle.Length}");
+			Console.WriteLine($"Количество элементов в очищенном массиве = {listRectangle.Count}");
+			Console.ReadLine();
 		}
 
         /// <summary>
@@ -82,5 +117,11 @@ namespace BL_8_Struct_Enum_Tuple_Generic
         public static void Lb8_P3_3_Anonymous()
         {            
         }
+
+		//public Anonymous GetSongData()
+		//{
+		//	return null;
+		//}
+
     }
 }
